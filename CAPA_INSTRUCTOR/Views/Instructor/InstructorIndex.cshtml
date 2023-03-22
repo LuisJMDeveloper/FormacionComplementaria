@@ -1,0 +1,136 @@
+﻿
+@{
+    ViewBag.Title = "InstructorIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Bienvenido Instructor</h2>
+
+<div class="card mt-4">
+    <section class="card-header d-flex justify-content-between gap-5 flex-wrap">
+        <h5>Formulario de solicitud</h5>
+        <div class="d-flex justify-content-end gap-3">
+            <button form="formSolicitud" class="btn btn-success btn-sm">
+                <i class="bi bi-file-earmark-check"></i> Guardar
+            </button>
+            <button form="formSolicitud" class="btn btn-danger btn-sm">
+                <i class="bi bi-trash"></i> Cancelar
+            </button>
+            <button form="formSolicitud" class="btn btn-primary btn-sm">
+                <i class="bi bi-send-check"></i> Enviar
+            </button>
+        </div>
+    </section>
+
+    <section class="card-body">
+            <div class="container">
+                <form id="formSolicitud">
+
+                    <div class="card">
+                        <div class="card-title">
+                            <h6>Infomación Solicitud</h6>
+                        </div>
+                        <div class="card-body d-flex justify-content-start gap-1 flex-wrap">
+
+                            <div class="form-group">
+                                <label for="fecha">Fecha:</label>
+                                <input type="date" class="form-control border-success" id="fecha" name="fecha">
+                            </div>
+                            <div class="form-group">
+                                <label for="tipo">Tipo:</label>
+                                <input type="text" class="form-control border-success" id="tipo" name="tipo">
+                            </div>
+                            <div class="form-group">
+                                <label for="nombre">Nombre:</label>
+                                <input type="text" class="form-control border-success" id="nombre" name="nombre">
+                            </div>
+                            <div class="form-group">
+                                <label for="estado">Estado:</label>
+                                <input type="text" class="form-control border-success" id="estado" name="estado">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        
+                            <h6 class="card-title">Infomación Curso</h6>
+                        
+                        <div class="card-body d-flex justify-content-start gap-1 flex-wrap">
+                            <div class="form-group">
+                                <label for="codigo">Código:</label>
+                                <input type="text" class="form-control border-success" id="codigo" name="codigo">
+                            </div>
+                            <div class="form-group">
+                                <label for="nombre_curso">Nombre del curso:</label>
+                                <input type="text" class="form-control border-success" id="nombre_curso" name="nombre_curso">
+                            </div>
+                            <div class="form-group">
+                                <label for="duracion">Duración:</label>
+                                <input type="text" class="form-control border-success" id="duracion" name="duracion">
+                            </div>
+                            <div class="form-group">
+                                <label for="fecha_inicio">Fecha de inicio:</label>
+                                <input type="date" class="form-control border-success" id="fecha_inicio" name="fecha_inicio">
+                            </div>
+                            <div class="form-group">
+                                <label for="fecha_fin">Fecha de fin:</label>
+                                <input type="date" class="form-control border-success" id="fecha_fin" name="fecha_fin">
+                            </div>
+                            <div class="form-group">
+                                <label for="observacion">Observación:</label>
+                                <textarea class="form-control border-success" id="observacion" name="observacion"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+    </section>
+
+    <section class="card-footer d-flex justify-content-between gap-1 flex-wrap">
+        <h6>Formulario de solicitud</h6>
+        <div class="d-flex justify-content-end gap-3">
+            <button form="formSolicitud" class="btn btn-outline-success btn-sm">
+                <i class="bi bi-file-earmark-check"></i> Guardar
+            </button>
+            <button form="formSolicitud" class="btn btn-outline-danger btn-sm">
+                <i class="bi bi-trash"></i> Cancelar
+            </button>
+            <button form="formSolicitud" class="btn btn-outline-primary btn-sm">
+                <i class="bi bi-send-check"></i> Enviar
+            </button>
+        </div>
+    </section>
+</div>
+
+<hr />
+
+<div class="card mt-5">
+
+    <section class="card-header d-flex justify-content-between gap-1 flex-wrap">
+        <h4>Lista De Solicitudes</h4>
+
+    </section>
+    <section class="card-body">
+
+        <table id="tabla" class="table display">
+            <thead>
+                <tr>
+                    <th>Solicitud</th>
+                    <th>Estado</th>
+                    <th>Fecha</th>
+                    <th>Tipo</th>
+                    <th>Ente</th>
+                    <th>Curso</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </section>
+
+</div>
+
+
+

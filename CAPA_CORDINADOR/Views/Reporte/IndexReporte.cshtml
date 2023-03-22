@@ -1,0 +1,129 @@
+﻿
+@{
+    ViewBag.Title = "IndexReporte";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card mt-5">
+
+    <section class="card-header d-flex justify-content-between gap-1 flex-wrap">
+        <h4>Lista De Solicitudes</h4>
+        <a target="_blank" class="btn btn-outline-danger btn-sm" href="https://localhost:44304/Reporte/getSolicitudesPrueba">IndexReporte Json</a>
+    </section>
+    <section class="card-body">
+
+        <table id="tabla" class="table display">
+            <thead>
+                <tr>
+                    <th>Nombre Instructor</th>
+                    <th>Apellido Instructor</th>
+                    <th>Nombre Curso</th>
+                    <th>Fecha Solicitud</th>
+                    <th>Tipo Solicitud</th>
+                    <th>Programa Formacion</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </section>
+
+</div>
+
+
+<div class="modal fade bg-dark" id="formModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="titleModal">
+                    Configuración
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+
+                    <div class="col-sm-6">
+                        <label for="txtNombre" class="form-label">Nombre de Instructor</label>
+                        <input type="text" class="form-control" id="txtNombre"/>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-success"></button>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+@section scripts{
+    <script>
+
+        var tabladata;
+
+        tabladata = $("#tabla").DataTable({
+            responsive: true,
+            orderign: false,
+            "ajax": {
+                url: '@Url.Action("getSolicitudesPrueba", "Reporte")',
+                type: "GET",
+                dataType: "json",
+            },
+            "columns": [
+
+                { "data": "us_name" },
+                { "data": "us_lastname" },
+                { "data": "cu_name" },
+                {
+                    "data": "so_date",
+                    "render": function (data, type, full, meta) {
+                        var date = new Date(parseInt(data.substr(6)));
+                        var day = date.getDate().toString().padStart(2, '0');
+                        var month = (date.getMonth() + 1).toString().padStart(2, '0');
+                        var year = date.getFullYear().toString();
+                        return day + "/" + month + "/" + year;
+                    }
+                },
+                { "data": "so_type" },
+                { "data": "pf_name" },
+                {
+                    "defaultContent":
+                        '<div class="d-flex flex-wrap justify-content-evenly"> '
+                        + '<button id="OpenFile" type="button" class="btn btn-outline-success btn-sm"><i class="bi bi-folder-symlink"></i> Abrir</button>'
+                        + '<button type="button" class="btn btn-outline-primary btn-sm"><i class="bi bi-check2-all"></i> Aprobar</button>'
+                        + '<button type="button" class="btn btn-outline-danger btn-sm"><i class="bi bi-x-lg"></i> Rechazar</button>'
+                        + '</div>',
+                    "orderable": false,
+                    "searchable": false,
+                }
+            ],
+            "language": {
+                "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
+            }
+        });
+
+        function ShowModal() {
+
+
+
+            $("#formModal")
+        }
+
+
+        $("#tabla tbody").on("click", '#OpenFile', function () {
+
+            var filaSelecionada = $(this).closest("tr");
+
+            console.log(tabladata.row(filaSelecionada).data())
+        })
+    </script>
+
+    <script src="~/Scripts/JS/Tabla.js"></script>
+}

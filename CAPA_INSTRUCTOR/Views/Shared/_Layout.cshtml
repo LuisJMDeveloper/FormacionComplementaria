@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html lang="es-co">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>@ViewBag.Title - FC Instructor</title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+   
+</head>
+<body>
+
+    <header>
+
+        <div class="_container d-flex justify-content-between">
+
+            <h2 class="_title">
+                Formacion Complementaria
+            </h2>
+
+            <div class="d-flex align-items-center">
+                <div class="dropdown">
+                    <div class="_divIcon bg-success" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person-fill-gear"></i>
+                    </div>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li>
+                            <a class="dropdown-item" href="#" data-bs-toggle="offcanvas"
+                               data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"> Perfil </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Cerrar Sesión</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+
+                <div class="offcanvas-header">
+                    <h4 class="offcanvas-title" id="offcanvasRightLabel">
+                        Configuración Perfil
+                    </h4>
+
+                    <button type="submit" form="formUserConfig" class="btn btn-success btn-sm">
+                        <i class="bi bi-pencil-fill"></i> Actualizar
+                    </button>
+                    <button class="btn-close text-reset" type="button" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+                </div>
+
+                <div class="offcanvas-body">
+                    <form id="formUserConfig" class="form-control-lg ">
+
+                        <div class="_formControl">
+                            <div class="_divIcon _divIcon-max bg-success" style="justify-content:center">
+                                <i class="bi bi-person-fill-gear"></i>
+                            </div>
+                        </div>
+
+                        <div class="_formControl">
+                            <input id="txtNID" class="form-control border-success shadow-success me-3" type="text" aria-label="Disabled input example" disabled placeholder="Número DNI" />
+                            <label class="form-label" for="txtNID">Usuario</label>
+                        </div>
+
+                        <div class="_formControl">
+                            <input id="txtName" class="form-control border-success shadow-success me-3" type="text" placeholder="Daniel José" />
+                            <label class="form-label" for="txtName">Nombre</label>
+                        </div>
+
+                        <div class="_formControl">
+                            <input id="txtLastname" class="form-control border-success shadow-success me-3" type="text" placeholder="Arrieta Diaz" />
+                            <label class="form-label" for="txtLastname">Apellido</label>
+                        </div>
+
+                        <div class="_formControl">
+                            <input id="txtPhone" class="form-control border-success shadow-success me-3" type="text" placeholder="310578984" />
+                            <label class="form-label" for="txtPhone">Teléfono</label>
+                        </div>
+
+                        <div class="_formControl">
+                            <input id="txtEmail" class="form-control border-success shadow-success me-3" type="email" placeholder="DanielDiaz@gmail.com" />
+                            <label class="form-label" for="txtEmail">Correo Electrónico</label>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <main>
+
+        <div class="container-xxl">
+            @RenderBody()
+        </div>
+
+    </main>
+
+    <footer>
+
+        <hr />
+        <p>&copy; @DateTime.Now.Year - Formación Complementaria</p>
+
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

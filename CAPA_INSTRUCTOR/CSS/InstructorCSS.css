@@ -1,0 +1,82 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial;
+}
+
+main {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.border-success:focus {
+    box-shadow: 0 0 0 0.15rem rgba(40, 167, 69, 0.5);
+}
+
+.option_:hover {
+    background-color: #28a745 !important;
+    color: #ffffff !important;
+}
+
+/*Header*/
+
+._container {
+    background-color: #183A1D;
+    padding: 10px 20px;
+}
+
+._divIcon {
+    background-color: #4cff00;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+._divIcon-max {
+    width: 70px;
+    height: 70px;
+}
+
+.offcanvas-header {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.offcanvas.animate__slideInRight {
+    animation-duration: 0.5s;
+}
+
+._title {
+    color: white;
+}
+
+.border-success:focus {
+    box-shadow: 0 0 0 0.15rem rgba(40, 167, 69, 0.5);
+}
+
+.option_:hover {
+    background-color: #28a745 !important;
+    color: #ffffff !important;
+}
+
+/*VENTANA DE PERFIL*/
+
+._formControl {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding-top:10px;
+}
+
+._formControl input{
+    text-align:center;
+}
