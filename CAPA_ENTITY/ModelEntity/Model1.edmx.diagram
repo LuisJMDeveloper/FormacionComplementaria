@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d9969f01111c4712b256f4c29eba4f3e" Name="Diagram1">
+      <Diagram DiagramId="d9969f01111c4712b256f4c29eba4f3e" Name="Diagram1" ZoomLevel="97">
         <EntityTypeShape EntityType="FC_MODEL.AMBIENTE" Width="1.5" PointX="6.125" PointY="8.5" IsExpanded="true" />
         <EntityTypeShape EntityType="FC_MODEL.CORDINADORA" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="FC_MODEL.CURSO" Width="1.5" PointX="7.5" PointY="3.25" IsExpanded="true" />
