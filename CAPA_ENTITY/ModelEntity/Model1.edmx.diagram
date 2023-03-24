@@ -25,6 +25,8 @@
         <AssociationConnector Association="FC_MODEL.FK__SOLICITUD__co_id__47DBAE45" />
         <AssociationConnector Association="FC_MODEL.FK__CURSO__so_id__5812160E" />
         <AssociationConnector Association="FC_MODEL.FK__SOLICITUD__in_id__48CFD27E" />
+        <EntityTypeShape EntityType="FC_MODEL.ACTIVIDAD" Width="1.5" PointX="9.75" PointY="0.75" />
+        <AssociationConnector Association="FC_MODEL.FK__ACTIVIDAD__cu_id__160F4887" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

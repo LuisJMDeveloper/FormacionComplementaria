@@ -5,6 +5,18 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="FC_MODEL.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ACTIVIDAD">
+          <Key>
+            <PropertyRef Name="ac_id" />
+          </Key>
+          <Property Name="ac_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cu_id" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ac_code" Type="int" />
+          <Property Name="ac_name" Type="varchar" MaxLength="200" />
+          <Property Name="ac_daytotal" Type="int" />
+          <Property Name="ac_timetable" Type="datetime" />
+          <Property Name="ac_timetable1" Type="varchar" MaxLength="1" />
+        </EntityType>
         <EntityType Name="AMBIENTE">
           <Key>
             <PropertyRef Name="am_id" />
@@ -104,6 +116,18 @@
           <Property Name="us_reestablecer" Type="bit" />
           <Property Name="us_date" Type="date" />
         </EntityType>
+        <Association Name="FK__ACTIVIDAD__cu_id__160F4887">
+          <End Role="CURSO" Type="Self.CURSO" Multiplicity="0..1" />
+          <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CURSO">
+              <PropertyRef Name="cu_id" />
+            </Principal>
+            <Dependent Role="ACTIVIDAD">
+              <PropertyRef Name="cu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__AMBIENTE__lo_id__4E88ABD4">
           <End Role="LOCACION" Type="Self.LOCACION" Multiplicity="0..1" />
           <End Role="AMBIENTE" Type="Self.AMBIENTE" Multiplicity="*" />
@@ -233,6 +257,7 @@
           <Parameter Name="us_nid" Type="numeric" Mode="In" />
         </Function>
         <EntityContainer Name="FC_MODELStoreContainer">
+          <EntitySet Name="ACTIVIDAD" EntityType="Self.ACTIVIDAD" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AMBIENTE" EntityType="Self.AMBIENTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CORDINADORA" EntityType="Self.CORDINADORA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CURSO" EntityType="Self.CURSO" Schema="dbo" store:Type="Tables" />
@@ -243,6 +268,10 @@
           <EntitySet Name="REPORTE" EntityType="Self.REPORTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SOLICITUD" EntityType="Self.SOLICITUD" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ACTIVIDAD__cu_id__160F4887" Association="Self.FK__ACTIVIDAD__cu_id__160F4887">
+            <End Role="CURSO" EntitySet="CURSO" />
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+          </AssociationSet>
           <AssociationSet Name="FK__AMBIENTE__lo_id__4E88ABD4" Association="Self.FK__AMBIENTE__lo_id__4E88ABD4">
             <End Role="LOCACION" EntitySet="LOCACION" />
             <End Role="AMBIENTE" EntitySet="AMBIENTE" />
@@ -328,6 +357,7 @@
           <NavigationProperty Name="PROGRAMA_FORMACION" Relationship="Self.FK__CURSO__pf_id__5629CD9C" FromRole="CURSO" ToRole="PROGRAMA_FORMACION" />
           <NavigationProperty Name="REPORTE" Relationship="Self.FK__REPORTE__cu_id__5AEE82B9" FromRole="CURSO" ToRole="REPORTE" />
           <NavigationProperty Name="SOLICITUD" Relationship="FC_MODEL.FK__CURSO__so_id__5812160E" FromRole="CURSO" ToRole="SOLICITUD" />
+          <NavigationProperty Name="ACTIVIDAD" Relationship="FC_MODEL.FK__ACTIVIDAD__cu_id__160F4887" FromRole="CURSO" ToRole="ACTIVIDAD" />
         </EntityType>
         <EntityType Name="INSTRUCTOR">
           <Key>
@@ -534,6 +564,11 @@
             <End Role="INSTRUCTOR" EntitySet="INSTRUCTOR" />
             <End Role="SOLICITUD" EntitySet="SOLICITUD" />
           </AssociationSet>
+          <EntitySet Name="ACTIVIDAD" EntityType="FC_MODEL.ACTIVIDAD" />
+          <AssociationSet Name="FK__ACTIVIDAD__cu_id__160F4887" Association="FC_MODEL.FK__ACTIVIDAD__cu_id__160F4887">
+            <End Role="CURSO" EntitySet="CURSO" />
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="getSolicitudesGPT_Result">
           <Property Type="String" Name="us_name" Nullable="true" MaxLength="30" />
@@ -600,6 +635,31 @@
             </Principal>
             <Dependent Role="SOLICITUD">
               <PropertyRef Name="in_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ACTIVIDAD">
+          <Key>
+            <PropertyRef Name="ac_id" />
+          </Key>
+          <Property Name="ac_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cu_id" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ac_code" Type="Int32" />
+          <Property Name="ac_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ac_daytotal" Type="Int32" />
+          <Property Name="ac_timetable" Type="DateTime" Precision="3" />
+          <Property Name="ac_timetable1" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CURSO" Relationship="FC_MODEL.FK__ACTIVIDAD__cu_id__160F4887" FromRole="ACTIVIDAD" ToRole="CURSO" />
+        </EntityType>
+        <Association Name="FK__ACTIVIDAD__cu_id__160F4887">
+          <End Type="FC_MODEL.CURSO" Role="CURSO" Multiplicity="0..1" />
+          <End Type="FC_MODEL.ACTIVIDAD" Role="ACTIVIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CURSO">
+              <PropertyRef Name="cu_id" />
+            </Principal>
+            <Dependent Role="ACTIVIDAD">
+              <PropertyRef Name="cu_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -740,6 +800,19 @@
                 <ScalarProperty Name="in_id" ColumnName="in_id" />
                 <ScalarProperty Name="co_id" ColumnName="co_id" />
                 <ScalarProperty Name="so_id" ColumnName="so_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ACTIVIDAD">
+            <EntityTypeMapping TypeName="FC_MODEL.ACTIVIDAD">
+              <MappingFragment StoreEntitySet="ACTIVIDAD">
+                <ScalarProperty Name="ac_timetable1" ColumnName="ac_timetable1" />
+                <ScalarProperty Name="ac_timetable" ColumnName="ac_timetable" />
+                <ScalarProperty Name="ac_daytotal" ColumnName="ac_daytotal" />
+                <ScalarProperty Name="ac_name" ColumnName="ac_name" />
+                <ScalarProperty Name="ac_code" ColumnName="ac_code" />
+                <ScalarProperty Name="cu_id" ColumnName="cu_id" />
+                <ScalarProperty Name="ac_id" ColumnName="ac_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
