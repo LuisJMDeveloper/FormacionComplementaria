@@ -53,6 +53,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ModelEntity\ACTIVIDAD.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="ModelEntity\AMBIENTE.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

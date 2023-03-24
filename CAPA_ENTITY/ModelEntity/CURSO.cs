@@ -18,6 +18,7 @@ namespace CAPA_ENTITY.ModelEntity
         public CURSO()
         {
             this.REPORTE = new HashSet<REPORTE>();
+            this.ACTIVIDAD = new HashSet<ACTIVIDAD>();
         }
     
         public decimal cu_id { get; set; }
@@ -39,5 +40,7 @@ namespace CAPA_ENTITY.ModelEntity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<REPORTE> REPORTE { get; set; }
         public virtual SOLICITUD SOLICITUD { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ACTIVIDAD> ACTIVIDAD { get; set; }
     }
 }

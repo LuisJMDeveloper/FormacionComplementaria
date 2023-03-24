@@ -37,6 +37,7 @@ namespace CAPA_ENTITY.ModelEntity
         public virtual DbSet<REPORTE> REPORTE { get; set; }
         public virtual DbSet<USUARIO> USUARIO { get; set; }
         public virtual DbSet<SOLICITUD> SOLICITUD { get; set; }
+        public virtual DbSet<ACTIVIDAD> ACTIVIDAD { get; set; }
     
         public virtual ObjectResult<getSolicitudesGPT_Result> getSolicitudesGPT(Nullable<int> us_nid, string so_status)
         {
