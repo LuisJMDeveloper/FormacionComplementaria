@@ -4,11 +4,37 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
 <div class="card mt-5">
 
+    <div id="alert-registros-nuevos" class="toast align-items-center text-light bg-success" role="alert" aria-live="assertive" aria-atomic="true" data-delay="3000">
+        <div class="d-flex">
+            <div class="toast-body">
+                ¡Nuevos registros cargados!
+            </div>
+            <button type="button" class="btn-close text-light me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+
+    <div id="alert-registros-iguales" class="toast align-items-center text-light bg-dark" role="alert" aria-live="assertive" aria-atomic="true" data-delay="3000">
+        <div class="d-flex">
+            <div class="toast-body">
+                ¡No hay nueos registros!
+            </div>
+            <button type="button" class="btn-close text-light me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+
+
     <section class="card-header d-flex justify-content-between gap-1 flex-wrap">
-        <h4>Lista De Solicitudes</h4>
-        <a target="_blank" class="btn btn-outline-danger btn-sm" href="https://localhost:44304/Reporte/getSolicitudesPrueba">IndexReporte Json</a>
+        <h4>
+            Lista De Solicitudes <span>
+                <button onclick="LoadTable()" class="btn btn-outline-dark btn-sm">
+                    Cargar tabla
+                </button>
+            </span>
+        </h4>
+        <a target="_blank" class="btn btn-outline-danger btn-sm" href="@Url.Action("getSolicitudesRecibidas", "Reporte")">IndexReporte Json</a>
     </section>
     <section class="card-body">
 
@@ -32,21 +58,21 @@
 </div>
 
 
-<div class="modal fade bg-dark" id="formModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade " id="formModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header bg-success text-light">
                 <h5 class="modal-title" id="titleModal">
                     Configuración
                 </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close text-light" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="row">
 
                     <div class="col-sm-6">
                         <label for="txtNombre" class="form-label">Nombre de Instructor</label>
-                        <input type="text" class="form-control" id="txtNombre"/>
+                        <input type="text" class="form-control" id="txtNombre" />
                     </div>
                 </div>
 
@@ -61,10 +87,33 @@
     </div>
 
 </div>
-
+<button onclick=""></button>
 
 @section scripts{
     <script>
+
+        var numRegistros = 0;
+
+        function LoadTable() {
+            let numRegistrosAntes = numRegistros;
+            tabladata.ajax.reload(function () {
+                numRegistros = tabladata.rows().count();
+                if (numRegistros > numRegistrosAntes) {
+                    $('#alert-registros-nuevos').show();
+                    setTimeout(function () {
+                        $('#alert-registros-nuevos').hide();
+                    }, 3000);
+                } else if (numRegistros < numRegistrosAntes) {
+
+                } else {
+                    $('#alert-registros-iguales').show();
+                    setTimeout(function () {
+                        $('#alert-registros-iguales').hide();
+                    }, 3000);
+                }
+            });
+
+        }
 
         var tabladata;
 
@@ -72,7 +121,7 @@
             responsive: true,
             orderign: false,
             "ajax": {
-                url: '@Url.Action("getSolicitudesPrueba", "Reporte")',
+                url: '@Url.Action("getSolicitudesRecibidas", "Reporte")',
                 type: "GET",
                 dataType: "json",
             },
@@ -83,7 +132,7 @@
                 { "data": "cu_name" },
                 {
                     "data": "so_date",
-                    "render": function (data, type, full, meta) {
+                    "render": function (data) {
                         var date = new Date(parseInt(data.substr(6)));
                         var day = date.getDate().toString().padStart(2, '0');
                         var month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -97,7 +146,7 @@
                     "defaultContent":
                         '<div class="d-flex flex-wrap justify-content-evenly"> '
                         + '<button id="OpenFile" type="button" class="btn btn-outline-success btn-sm"><i class="bi bi-folder-symlink"></i> Abrir</button>'
-                        + '<button type="button" class="btn btn-outline-primary btn-sm"><i class="bi bi-check2-all"></i> Aprobar</button>'
+                        + '<button onclick="ShowModal()" type="button" class="btn btn-outline-primary btn-sm"><i class="bi bi-check2-all"></i> Aprobar</button>'
                         + '<button type="button" class="btn btn-outline-danger btn-sm"><i class="bi bi-x-lg"></i> Rechazar</button>'
                         + '</div>',
                     "orderable": false,
@@ -109,20 +158,21 @@
             }
         });
 
-        function ShowModal() {
+        function ShowModal(json) {
 
-
-
-            $("#formModal")
+            $("#formModal").modal("show");
         }
 
 
         $("#tabla tbody").on("click", '#OpenFile', function () {
 
-            var filaSelecionada = $(this).closest("tr");
+            var filaSelecionada = tabladata.row(this).data();
 
-            console.log(tabladata.row(filaSelecionada).data())
+            console.log(filaSelecionada)
+
         })
+
+
     </script>
 
     <script src="~/Scripts/JS/Tabla.js"></script>

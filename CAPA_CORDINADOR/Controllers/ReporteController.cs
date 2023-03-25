@@ -19,12 +19,12 @@ namespace CAPA_CORDINADOR.Controllers
         }
 
         [HttpGet]
-        public JsonResult getSolicitudesPrueba()
+        public JsonResult getSolicitudesRecibidas()
         {
             
             using (var db = new FC_DB())
             {
-                var oLista = db.Database.SqlQuery<SolicitudPrueba>("EXEC getSolicitudesPrueba").ToList();
+                var oLista = db.Database.SqlQuery<getSolicitudesRecibidas>("EXEC getSolicitudesRecibidas").ToList();
                 return Json( new { data = oLista }, JsonRequestBehavior.AllowGet);
             }
         }

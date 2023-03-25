@@ -40,6 +40,7 @@
     <NavigationProperty Name="PROGRAMA_FORMACION" Relationship="Self.FK__CURSO__pf_id__5629CD9C" FromRole="CURSO" ToRole="PROGRAMA_FORMACION" />
     <NavigationProperty Name="REPORTE" Relationship="Self.FK__REPORTE__cu_id__5AEE82B9" FromRole="CURSO" ToRole="REPORTE" />
     <NavigationProperty Name="SOLICITUD" Relationship="FC_MODEL.FK__CURSO__so_id__5812160E" FromRole="CURSO" ToRole="SOLICITUD" />
+    <NavigationProperty Name="ACTIVIDAD" Relationship="FC_MODEL.FK__ACTIVIDAD__cu_id__160F4887" FromRole="CURSO" ToRole="ACTIVIDAD" />
   </EntityType>
   <EntityType Name="INSTRUCTOR">
     <Key>
@@ -246,6 +247,24 @@
       <End Role="INSTRUCTOR" EntitySet="INSTRUCTOR" />
       <End Role="SOLICITUD" EntitySet="SOLICITUD" />
     </AssociationSet>
+    <EntitySet Name="ACTIVIDAD" EntityType="FC_MODEL.ACTIVIDAD" />
+    <AssociationSet Name="FK__ACTIVIDAD__cu_id__160F4887" Association="FC_MODEL.FK__ACTIVIDAD__cu_id__160F4887">
+      <End Role="CURSO" EntitySet="CURSO" />
+      <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+    </AssociationSet>
+    <FunctionImport Name="getSolicitudesRecibidas" ReturnType="Collection(FC_MODEL.getSolicitudesRecibidas_Result)" />
+    <FunctionImport Name="GetUserType" ReturnType="Collection(String)">
+      <Parameter Name="us_nid" Mode="In" Type="Decimal" />
+      <Parameter Name="us_password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="saveUser" ReturnType="Collection(Int32)">
+      <Parameter Name="us_nid" Mode="In" Type="Decimal" />
+      <Parameter Name="us_password" Mode="In" Type="String" />
+      <Parameter Name="us_name" Mode="In" Type="String" />
+      <Parameter Name="us_lastname" Mode="In" Type="String" />
+      <Parameter Name="us_email" Mode="In" Type="String" />
+      <Parameter Name="us_phone" Mode="In" Type="Decimal" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="getSolicitudesGPT_Result">
     <Property Type="String" Name="us_name" Nullable="true" MaxLength="30" />
@@ -315,4 +334,66 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="ACTIVIDAD">
+    <Key>
+      <PropertyRef Name="ac_id" />
+    </Key>
+    <Property Name="ac_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cu_id" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ac_code" Type="Int32" />
+    <Property Name="ac_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ac_daytotal" Type="Int32" />
+    <Property Name="ac_timetable" Type="DateTime" Precision="3" />
+    <Property Name="ac_timetable1" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CURSO" Relationship="FC_MODEL.FK__ACTIVIDAD__cu_id__160F4887" FromRole="ACTIVIDAD" ToRole="CURSO" />
+  </EntityType>
+  <Association Name="FK__ACTIVIDAD__cu_id__160F4887">
+    <End Type="FC_MODEL.CURSO" Role="CURSO" Multiplicity="0..1" />
+    <End Type="FC_MODEL.ACTIVIDAD" Role="ACTIVIDAD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CURSO">
+        <PropertyRef Name="cu_id" />
+      </Principal>
+      <Dependent Role="ACTIVIDAD">
+        <PropertyRef Name="cu_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="getSolicitudesRecibidas_Result">
+    <Property Type="Decimal" Name="us_id" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="us_nid" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="String" Name="us_password" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="us_typeuser" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="us_name" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="us_lastname" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="us_email" Nullable="true" MaxLength="60" />
+    <Property Type="Decimal" Name="us_phone" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="Boolean" Name="us_reestablecer" Nullable="true" />
+    <Property Type="DateTime" Name="us_date" Nullable="true" />
+    <Property Type="Decimal" Name="in_id" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="so_id" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="co_id" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="in_id1" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="Int32" Name="so_name" Nullable="true" />
+    <Property Type="String" Name="so_status" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="so_type" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="so_ente" Nullable="true" MaxLength="60" />
+    <Property Type="DateTime" Name="so_date" Nullable="true" />
+    <Property Type="Decimal" Name="cu_id" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="am_id" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="pf_id" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="pe_id" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="so_id1" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="Int32" Name="cu_code" Nullable="true" />
+    <Property Type="String" Name="cu_name" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="cu_duration" Nullable="true" />
+    <Property Type="DateTime" Name="cu_startdate" Nullable="true" />
+    <Property Type="DateTime" Name="cu_enddate" Nullable="true" />
+    <Property Type="String" Name="cu_note" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="cu_days" Nullable="true" MaxLength="100" />
+    <Property Type="Decimal" Name="pf_id1" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="Int32" Name="pf_code" Nullable="true" />
+    <Property Type="String" Name="pf_name" Nullable="true" MaxLength="100" />
+    <Property Type="Double" Name="pf_version" Nullable="true" />
+  </ComplexType>
 </Schema>

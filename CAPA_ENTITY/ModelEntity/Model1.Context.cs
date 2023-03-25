@@ -65,5 +65,52 @@ namespace CAPA_ENTITY.ModelEntity
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("ValidarUsuario", us_nidParameter);
         }
+    
+        public virtual ObjectResult<getSolicitudesRecibidas_Result> getSolicitudesRecibidas()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getSolicitudesRecibidas_Result>("getSolicitudesRecibidas");
+        }
+    
+        public virtual ObjectResult<string> GetUserType(Nullable<decimal> us_nid, string us_password)
+        {
+            var us_nidParameter = us_nid.HasValue ?
+                new ObjectParameter("us_nid", us_nid) :
+                new ObjectParameter("us_nid", typeof(decimal));
+    
+            var us_passwordParameter = us_password != null ?
+                new ObjectParameter("us_password", us_password) :
+                new ObjectParameter("us_password", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetUserType", us_nidParameter, us_passwordParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> saveUser(Nullable<decimal> us_nid, string us_password, string us_name, string us_lastname, string us_email, Nullable<decimal> us_phone)
+        {
+            var us_nidParameter = us_nid.HasValue ?
+                new ObjectParameter("us_nid", us_nid) :
+                new ObjectParameter("us_nid", typeof(decimal));
+    
+            var us_passwordParameter = us_password != null ?
+                new ObjectParameter("us_password", us_password) :
+                new ObjectParameter("us_password", typeof(string));
+    
+            var us_nameParameter = us_name != null ?
+                new ObjectParameter("us_name", us_name) :
+                new ObjectParameter("us_name", typeof(string));
+    
+            var us_lastnameParameter = us_lastname != null ?
+                new ObjectParameter("us_lastname", us_lastname) :
+                new ObjectParameter("us_lastname", typeof(string));
+    
+            var us_emailParameter = us_email != null ?
+                new ObjectParameter("us_email", us_email) :
+                new ObjectParameter("us_email", typeof(string));
+    
+            var us_phoneParameter = us_phone.HasValue ?
+                new ObjectParameter("us_phone", us_phone) :
+                new ObjectParameter("us_phone", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("saveUser", us_nidParameter, us_passwordParameter, us_nameParameter, us_lastnameParameter, us_emailParameter, us_phoneParameter);
+        }
     }
 }

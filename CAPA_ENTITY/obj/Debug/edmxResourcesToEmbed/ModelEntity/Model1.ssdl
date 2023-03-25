@@ -1,5 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="FC_MODEL.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ACTIVIDAD">
+    <Key>
+      <PropertyRef Name="ac_id" />
+    </Key>
+    <Property Name="ac_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cu_id" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="ac_code" Type="int" />
+    <Property Name="ac_name" Type="varchar" MaxLength="200" />
+    <Property Name="ac_daytotal" Type="int" />
+    <Property Name="ac_timetable" Type="datetime" />
+    <Property Name="ac_timetable1" Type="varchar" MaxLength="1" />
+  </EntityType>
   <EntityType Name="AMBIENTE">
     <Key>
       <PropertyRef Name="am_id" />
@@ -99,6 +111,18 @@
     <Property Name="us_reestablecer" Type="bit" />
     <Property Name="us_date" Type="date" />
   </EntityType>
+  <Association Name="FK__ACTIVIDAD__cu_id__160F4887">
+    <End Role="CURSO" Type="Self.CURSO" Multiplicity="0..1" />
+    <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CURSO">
+        <PropertyRef Name="cu_id" />
+      </Principal>
+      <Dependent Role="ACTIVIDAD">
+        <PropertyRef Name="cu_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__AMBIENTE__lo_id__4E88ABD4">
     <End Role="LOCACION" Type="Self.LOCACION" Multiplicity="0..1" />
     <End Role="AMBIENTE" Type="Self.AMBIENTE" Multiplicity="*" />
@@ -219,15 +243,21 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Function Name="getSolicitudesGPT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="us_nid" Type="int" Mode="In" />
-    <Parameter Name="so_status" Type="varchar" Mode="In" />
-  </Function>
-  <Function Name="getSolicitudesPrueba" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-  <Function Name="ValidarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+  <Function Name="getSolicitudesRecibidas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetUserType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="us_nid" Type="numeric" Mode="In" />
+    <Parameter Name="us_password" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="saveUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="us_nid" Type="numeric" Mode="In" />
+    <Parameter Name="us_password" Type="varchar" Mode="In" />
+    <Parameter Name="us_name" Type="varchar" Mode="In" />
+    <Parameter Name="us_lastname" Type="varchar" Mode="In" />
+    <Parameter Name="us_email" Type="varchar" Mode="In" />
+    <Parameter Name="us_phone" Type="numeric" Mode="In" />
   </Function>
   <EntityContainer Name="FC_MODELStoreContainer">
+    <EntitySet Name="ACTIVIDAD" EntityType="Self.ACTIVIDAD" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AMBIENTE" EntityType="Self.AMBIENTE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CORDINADORA" EntityType="Self.CORDINADORA" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CURSO" EntityType="Self.CURSO" Schema="dbo" store:Type="Tables" />
@@ -238,6 +268,10 @@
     <EntitySet Name="REPORTE" EntityType="Self.REPORTE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SOLICITUD" EntityType="Self.SOLICITUD" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ACTIVIDAD__cu_id__160F4887" Association="Self.FK__ACTIVIDAD__cu_id__160F4887">
+      <End Role="CURSO" EntitySet="CURSO" />
+      <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
+    </AssociationSet>
     <AssociationSet Name="FK__AMBIENTE__lo_id__4E88ABD4" Association="Self.FK__AMBIENTE__lo_id__4E88ABD4">
       <End Role="LOCACION" EntitySet="LOCACION" />
       <End Role="AMBIENTE" EntitySet="AMBIENTE" />

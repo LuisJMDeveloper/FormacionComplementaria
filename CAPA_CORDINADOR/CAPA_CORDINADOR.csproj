@@ -359,6 +359,7 @@
     <Content Include="Content\DataTables\swf\flashExport.swf" />
     <Content Include="Content\Scripts\bootstrap-hover-dropdown.js" />
     <Content Include="Content\Scripts\bootstrap-hover-dropdown.min.js" />
+    <Content Include="CSS\Reporte.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -588,7 +589,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="CSS\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
