@@ -10,7 +10,7 @@
 <div class="card mt-5">
 
     @*Mensajes que se muestran al dar clic sobre el botón cargar
-        
+
         Mensaje nuevo regsitro a la tabla *@
     <div id="alert-registros-nuevos" class="toast align-items-center text-light bg-success" role="alert" aria-live="assertive" aria-atomic="true" data-delay="3000">
         <div class="d-flex">
@@ -30,7 +30,7 @@
         </div>
     </div>
 
-@*  Cabecera de la carta donde se encuentra la tabla de consulta de solicitudes *@
+    @*  Cabecera de la carta donde se encuentra la tabla de consulta de solicitudes *@
     <section class="card-header d-flex justify-content-between gap-1 flex-wrap">
         <h4>
             Lista De Solicitudes
@@ -40,15 +40,15 @@
                 </button>
             </span>
         </h4>
-@*  Esta etiqueta abre una nueva pestaña en la que se muestra el JSON que contiene la información donde 
-    se encuentra la información de la consulta de solicitudes *@
+        @*  Esta etiqueta abre una nueva pestaña en la que se muestra el JSON que contiene la información donde
+            se encuentra la información de la consulta de solicitudes *@
         <a target="_blank" class="btn btn-outline-danger btn-sm" href="@Url.Action("getSolicitudesRecibidas", "Reporte")">IndexReporte Json</a>
     </section>
 
-@*  Inicio del contenido de la carta *@
+    @*  Inicio del contenido de la carta *@
     <section class="card-body">
 
-@*  Esta tabla es la que muesta la informacion del JSON getSolicidesRecibidas*@
+        @*  Esta tabla es la que muesta la informacion del JSON getSolicidesRecibidas*@
         <table id="tabla" class="table display">
             <thead>
                 <tr>
@@ -68,7 +68,7 @@
 
 </div>
 
-@*  Este modal se va a usar para confirmar que se desea aplicar los cambios. 
+@*  Este modal se va a usar para confirmar que se desea aplicar los cambios.
     Cambios de actualización del estado de la solicitud*@
 <div class="modal fade " id="formModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <form id="formConfirmacionCambios" class="modal-dialog">
@@ -88,7 +88,7 @@
                         <label for="txtInstructor" class="form-label">
                             Instructor
                         </label>
-                        <input id="txtInstructor" name="txtInstructor" form="formConfirmacionCambios" type="text" class="form-control"  />
+                        <input id="txtInstructor" name="txtInstructor" form="formConfirmacionCambios" type="text" class="form-control" />
                     </div>
 
                     <div class="col-sm-6">
@@ -134,10 +134,71 @@
         var numRegistros = 0;
         var tabladata;
         var filaSelecionada;
+        var getDataTabledata;
 
         @*  Es aquí donde se carga con las solicitudes*@
+        tabladata = $("#tabla").DataTable({
+            responsive: true,
+            orderign: false,
+            "ajax": {
+                url: '@Url.Action("getSolicitudesRecibidas", "Reporte")',
+                type: "GET",
+                dataType: "json",
+            },
+            "columns": [
 
-        
+                { "data": "us_name" },
+                { "data": "us_lastname" },
+                { "data": "cu_name" },
+                {
+                    "data": "so_date",
+                    "render": function (data) {
+                        var date = new Date(parseInt(data.substr(6)));
+                        var day = date.getDate().toString().padStart(2, '0');
+                        var month = (date.getMonth() + 1).toString().padStart(2, '0');
+                        var year = date.getFullYear().toString();
+                        return day + "/" + month + "/" + year;
+                    }
+                },
+                { "data": "so_type" },
+                { "data": "pf_name" },
+                {
+                    "defaultContent":
+                        '<div class="d-flex gap-1"> '
+                        +'<button id="Aprobar" type="button" class="btn btn-outline-primary btn-sm"> <i class="bi bi-pencil-fill"></i> </button>'
+                        + '<button id="OpenFile" type="button" class="btn btn-outline-success btn-sm"> <i class="bi bi-folder-symlink"></i> </button>'
+                        + '</div>',
+                    "orderable": false,
+                    "searchable": false,
+                }
+            ],
+            language: {
+                "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
+            }
+        });
+
+        @*   Obtiene el JSON de la fila *@
+        $("#tabla tbody").on("click", '#Aprobar', function () {
+
+            filaSelecionada = $(this).closest("tr")
+            getDataTabledata = tabladata.row(filaSelecionada).data();
+
+            if (getDataTabledata != undefined) {
+                ShowModal(getDataTabledata);
+            } else {
+                getDataTabledata = tabladata.row(this).data();
+                ShowModal(getDataTabledata);
+            }
+            console.log(getDataTabledata);
+            
+        })
+
+        $("#tabla tbody").on("click", 'Aprobar', function () {
+
+            ShowModal(filaSelecionada);
+        })
+
+        @*  Actualiza la tabla*@
         function LoadTable() {
             let numRegistrosAntes = numRegistros;
             tabladata.ajax.reload(function () {
@@ -174,89 +235,41 @@
 
             if (json != null) {
                 $("#txtIdSolicitud").val(json.so_id);
-                let fecha = new Date(json.so_date);
 
-                var day = fecha.getDate();
-                var month = fecha.getMonth() + 1; // se suma 1 porque los meses empiezan en 0 (enero)
-                var year = fecha.getFullYear();
+                var fecha = json.so_date;
 
-                var formattedDate = `${day}/${month}/${year}`;
+                const timestamp = Number(fecha.match(/\d+/)[0]);
+                const date = new Date(timestamp);
+                const day = date.getDate().toString().padStart(2, '0');
+                const month = (date.getMonth() + 1).toString().padStart(2, '0');
+                const year = date.getFullYear().toString();
+                const formattedDate = `${day}/${month}/${year}`;
+                console.log(formattedDate);
 
-                fecha = `${formattedDate}`;
+                console.log(json.so_id);
 
                 $("#txtInstructor").val(json.us_name);
-                $("#txtFechaSolicitud").val(fecha);
+                $("#txtFechaSolicitud").val(formattedDate);
                 $("#txtNombreCurso").val(json.cu_name);
                 $("#txtProgramaFormacion").val(json.pf_name);
+                $("#formModal").modal("show");
+            } else {
+                alert("A ocurrido un erro, intenta recargar la página")
             }
-            $("#formModal").modal("show");
+            
         }
 
-        function Guardar() {
+        function Guardar(json) {
             var User = {
-                us_name: $("us_name")
+                so_id: $("txtIdSolicitud")
             }
         }
 
-        @*Hace que la información de la tabla se recargue*@
-        tabladata = $("#tabla").DataTable({
-            responsive: true,
-            orderign: false,
-            "ajax": {
-                url: '@Url.Action("getSolicitudesRecibidas", "Reporte")',
-                type: "GET",
-                dataType: "json",
-            },
-            "columns": [
 
-                { "data": "us_name" },
-                { "data": "us_lastname" },
-                { "data": "cu_name" },
-                {
-                    "data": "so_date",
-                    "render": function (data) {
-                        var date = new Date(parseInt(data.substr(6)));
-                        var day = date.getDate().toString().padStart(2, '0');
-                        var month = (date.getMonth() + 1).toString().padStart(2, '0');
-                        var year = date.getFullYear().toString();
-                        return day + "/" + month + "/" + year;
-                    }
-                },
-                { "data": "so_type" },
-                { "data": "pf_name" },
-                {
-                    "defaultContent":
-                        '<div class=""> '
-                        +'<button id="Aprobar" type="button" class="btn btn-outline-primary btn-sm"> <i class="bi bi-pencil-fill"></i> </button>'
-                        + '<button id="OpenFile" type="button" class="btn btn-outline-success btn-sm"> <i class="bi bi-folder-symlink"></i> </button>'
-                        + '</div>',
-                    "orderable": false,
-                    "searchable": false,
-                }
-            ],
-            language: {
-                "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
-            }
-        });
-
-        @*   Obtiene el JSON de la fila *@
-
-
-        $("#tabla tbody").on("click", '#Aprobar', function () {
-
-            var getDataTabledata = tabladata.row(this).data();
-            console.log(getDataTabledata);
-            ShowModal(getDataTabledata);
-
-        })
-
-        $("#tabla tbody").on("click", 'Aprobar', function () {
-
-            ShowModal(filaSelecionada);
-        })
 
 
     </script>
 
     <script src="~/Scripts/JS/Tabla.js"></script>
 }
+
