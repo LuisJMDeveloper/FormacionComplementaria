@@ -265,6 +265,10 @@
       <Parameter Name="us_email" Mode="In" Type="String" />
       <Parameter Name="us_phone" Mode="In" Type="Decimal" />
     </FunctionImport>
+    <FunctionImport Name="ActualizaEstadoSolicitud">
+      <Parameter Name="so_id" Mode="In" Type="Decimal" />
+      <Parameter Name="so_status" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="getSolicitudesGPT_Result">
     <Property Type="String" Name="us_name" Nullable="true" MaxLength="30" />

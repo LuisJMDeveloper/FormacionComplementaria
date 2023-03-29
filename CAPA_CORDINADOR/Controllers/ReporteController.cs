@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using CAPA_ENTITY.ModelEntity;
 using CAPA_ENTITY.ViewModels;
@@ -28,5 +29,7 @@ namespace CAPA_CORDINADOR.Controllers
                 return Json( new { data = oLista }, JsonRequestBehavior.AllowGet);
             }
         }
+
+        
     }
 }

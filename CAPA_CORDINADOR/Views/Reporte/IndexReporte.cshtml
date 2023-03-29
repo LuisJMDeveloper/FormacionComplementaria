@@ -117,10 +117,10 @@
 
             </div>
             <div class="modal-footer">
-                <button id="btnAprobar" name="btnAprobar" form="formConfirmacionCambios" value="Aprobar" type="button" class="btn btn-success" data-bs-dismiss="modal">
+                <button id="btnAprobar" name="btnAprobar" form="formConfirmacionCambios" onclick="ActualizaSolicitud(1)" value="Aprobar" type="button" class="btn btn-success" data-bs-dismiss="modal">
                     Aprobar
                 </button>
-                <button id="btnRechazar" name="btnRechazar" form="formConfirmacionCambios" value="Rechazar" type="submit" class="btn btn-danger" data-bs-dismiss="modal">
+                <button id="btnRechazar" name="btnRechazar" form="formConfirmacionCambios" onclick="ActualizaSolicitud(2)" value="Rechazar" type="submit" class="btn btn-danger" data-bs-dismiss="modal">
                     Rechazar
                 </button>
             </div>
@@ -193,11 +193,6 @@
             
         })
 
-        $("#tabla tbody").on("click", 'Aprobar', function () {
-
-            ShowModal(filaSelecionada);
-        })
-
         @*  Actualiza la tabla*@
         function LoadTable() {
             let numRegistrosAntes = numRegistros;
@@ -259,15 +254,13 @@
             
         }
 
-        function Guardar(json) {
-            var User = {
-                so_id: $("txtIdSolicitud")
-            }
+        function ActualizaSolicitud(btn) {
+            var so_id = $("#txtIdSolicitud").val();
+            var status = btn;
+            console.log(so_id + "-" + status)
+            
+
         }
-
-
-
-
     </script>
 
     <script src="~/Scripts/JS/Tabla.js"></script>

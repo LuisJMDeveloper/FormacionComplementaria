@@ -112,5 +112,18 @@ namespace CAPA_ENTITY.ModelEntity
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("saveUser", us_nidParameter, us_passwordParameter, us_nameParameter, us_lastnameParameter, us_emailParameter, us_phoneParameter);
         }
+    
+        public virtual int ActualizaEstadoSolicitud(Nullable<decimal> so_id, Nullable<int> so_status)
+        {
+            var so_idParameter = so_id.HasValue ?
+                new ObjectParameter("so_id", so_id) :
+                new ObjectParameter("so_id", typeof(decimal));
+    
+            var so_statusParameter = so_status.HasValue ?
+                new ObjectParameter("so_status", so_status) :
+                new ObjectParameter("so_status", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ActualizaEstadoSolicitud", so_idParameter, so_statusParameter);
+        }
     }
 }

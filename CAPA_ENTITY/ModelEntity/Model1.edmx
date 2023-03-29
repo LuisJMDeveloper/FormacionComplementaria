@@ -248,6 +248,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="ActualizaEstadoSolicitud" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="so_id" Type="numeric" Mode="In" />
+          <Parameter Name="so_status" Type="int" Mode="In" />
+        </Function>
         <Function Name="getSolicitudesRecibidas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetUserType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="us_nid" Type="numeric" Mode="In" />
@@ -587,6 +591,10 @@
             <Parameter Name="us_email" Mode="In" Type="String" />
             <Parameter Name="us_phone" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="ActualizaEstadoSolicitud">
+            <Parameter Name="so_id" Mode="In" Type="Decimal" />
+            <Parameter Name="so_status" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="getSolicitudesGPT_Result">
           <Property Type="String" Name="us_name" Nullable="true" MaxLength="30" />
@@ -889,6 +897,7 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetUserType" FunctionName="FC_MODEL.Store.GetUserType" />
           <FunctionImportMapping FunctionImportName="saveUser" FunctionName="FC_MODEL.Store.saveUser" />
+          <FunctionImportMapping FunctionImportName="ActualizaEstadoSolicitud" FunctionName="FC_MODEL.Store.ActualizaEstadoSolicitud" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

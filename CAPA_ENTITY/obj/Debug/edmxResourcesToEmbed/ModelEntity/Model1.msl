@@ -166,5 +166,6 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="GetUserType" FunctionName="FC_MODEL.Store.GetUserType" />
     <FunctionImportMapping FunctionImportName="saveUser" FunctionName="FC_MODEL.Store.saveUser" />
+    <FunctionImportMapping FunctionImportName="ActualizaEstadoSolicitud" FunctionName="FC_MODEL.Store.ActualizaEstadoSolicitud" />
   </EntityContainerMapping>
 </Mapping>
