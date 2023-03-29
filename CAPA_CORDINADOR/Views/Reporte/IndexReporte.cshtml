@@ -5,8 +5,13 @@
 }
 
 
+@*  Este div es donde se encuentra la tabla de consulta de solicitudes
+    Es de tipo carta *@
 <div class="card mt-5">
 
+    @*Mensajes que se muestran al dar clic sobre el botón cargar
+        
+        Este se muestra en caso de que se añada un nuevo regsitro a la tabla *@
     <div id="alert-registros-nuevos" class="toast align-items-center text-light bg-success" role="alert" aria-live="assertive" aria-atomic="true" data-delay="3000">
         <div class="d-flex">
             <div class="toast-body">
@@ -15,7 +20,7 @@
             <button type="button" class="btn-close text-light me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
     </div>
-
+    @*  Este se muestra cuando el número de registros se el mismo *@
     <div id="alert-registros-iguales" class="toast align-items-center text-light bg-dark" role="alert" aria-live="assertive" aria-atomic="true" data-delay="3000">
         <div class="d-flex">
             <div class="toast-body">
@@ -25,19 +30,25 @@
         </div>
     </div>
 
-
+@*  Cabecera de la carta donde se encuentra la tabla de consulta de solicitudes *@
     <section class="card-header d-flex justify-content-between gap-1 flex-wrap">
         <h4>
-            Lista De Solicitudes <span>
+            Lista De Solicitudes
+            <span>
                 <button onclick="LoadTable()" class="btn btn-outline-dark btn-sm">
                     Cargar tabla
                 </button>
             </span>
         </h4>
+@*  Esta etiqueta abre una nueva pestaña en la que se muestra el JSON que contiene la información donde 
+    se encuentra la información de la consulta de solicitudes *@
         <a target="_blank" class="btn btn-outline-danger btn-sm" href="@Url.Action("getSolicitudesRecibidas", "Reporte")">IndexReporte Json</a>
     </section>
+
+@*  Inicio del contenido de la carta *@
     <section class="card-body">
 
+@*  Esta tabla es la que muesta la informacion del JSON getSolicidesRecibidas*@
         <table id="tabla" class="table display">
             <thead>
                 <tr>
@@ -57,34 +68,66 @@
 
 </div>
 
-
+@*  Este modal se va a usar para confirmar que se desea aplicar los cambios. 
+    Cambios de actualización del estado de la solicitud*@
 <div class="modal fade " id="formModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <form id="formConfirmacionCambios" class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header bg-success text-light">
                 <h5 class="modal-title" id="titleModal">
-                    Configuración
+                    Confirmación de cambios
                 </h5>
                 <button type="button" class="btn-close text-light" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+                @*  En este input se almacena el "id" para luego hacer la operación*@
+                <input id="txtIdSolicitud" hidden />
+
                 <div class="row">
+                    <div class="col-sm-6">
+                        <label for="txtInstructor" class="form-label">
+                            Instructor
+                        </label>
+                        <input id="txtInstructor" name="txtInstructor" form="formConfirmacionCambios" type="text" class="form-control"  />
+                    </div>
 
                     <div class="col-sm-6">
-                        <label for="txtNombre" class="form-label">Nombre de Instructor</label>
-                        <input type="text" class="form-control" id="txtNombre" />
+                        <label for="txtFechaSolicitud" class="form-label">
+                            Fecha de la solicitud
+                        </label>
+                        <input id="txtFechaSolicitud" name="txtFechaSolicitud" form="formConfirmacionCambios" type="text" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="txtNombreCurso" class="form-label">
+                            Nombre del curso
+                        </label>
+                        <input type="text" class="form-control" id="txtNombreCurso" name="txtNombreCurso" />
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="txtProgramaFormacion" class="form-label">
+                            Programa de formación
+                        </label>
+                        <input type="text" class="form-control" id="txtProgramaFormacion" name="txtProgramaFormacion" />
                     </div>
                 </div>
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-success"></button>
+                <button id="btnAprobar" name="btnAprobar" type="button" class="btn btn-success" data-bs-dismiss="modal">
+                    Aprobar
+                </button>
+                <button id="btnRechazar" name="btnRechazar" type="submit" class="btn btn-danger" data-bs-dismiss="modal">
+                    Rechazar
+                </button>
             </div>
 
         </div>
 
-    </div>
+    </form>
 
 </div>
 <button onclick=""></button>
@@ -93,6 +136,7 @@
     <script>
 
         var numRegistros = 0;
+        var tabladata;
 
         function LoadTable() {
             let numRegistrosAntes = numRegistros;
@@ -115,7 +159,7 @@
 
         }
 
-        var tabladata;
+        
 
         tabladata = $("#tabla").DataTable({
             responsive: true,

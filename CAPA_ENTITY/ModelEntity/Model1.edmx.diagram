@@ -4,16 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d9969f01111c4712b256f4c29eba4f3e" Name="Diagram1" ZoomLevel="95">
-        <EntityTypeShape EntityType="FC_MODEL.AMBIENTE" Width="1.5" PointX="6.125" PointY="8.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="FC_MODEL.CORDINADORA" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="FC_MODEL.CURSO" Width="1.5" PointX="7.5" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="FC_MODEL.INSTRUCTOR" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="FC_MODEL.LOCACION" Width="1.5" PointX="3.75" PointY="8.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="FC_MODEL.PROGRAMA_ESPECIAL" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="FC_MODEL.PROGRAMA_FORMACION" Width="1.5" PointX="9.375" PointY="8.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="FC_MODEL.REPORTE" Width="1.5" PointX="9.75" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="FC_MODEL.USUARIO" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+      <Diagram DiagramId="d9969f01111c4712b256f4c29eba4f3e" Name="Diagram1" ZoomLevel="79">
+        <EntityTypeShape EntityType="FC_MODEL.AMBIENTE" Width="1.5" PointX="11" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="FC_MODEL.CORDINADORA" Width="1.5" PointX="3.5" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FC_MODEL.CURSO" Width="1.5" PointX="7.5" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FC_MODEL.INSTRUCTOR" Width="1.5" PointX="3.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FC_MODEL.LOCACION" Width="1.5" PointX="13.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FC_MODEL.PROGRAMA_ESPECIAL" Width="1.5" PointX="6.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FC_MODEL.PROGRAMA_FORMACION" Width="1.5" PointX="10.875" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FC_MODEL.REPORTE" Width="1.5" PointX="10.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="FC_MODEL.USUARIO" Width="1.5" PointX="1.25" PointY="3.125" IsExpanded="true" />
         <AssociationConnector Association="FC_MODEL.FK__AMBIENTE__lo_id__4E88ABD4" ManuallyRouted="false" />
         <AssociationConnector Association="FC_MODEL.FK__CURSO__am_id__5535A963" ManuallyRouted="false" />
         <AssociationConnector Association="FC_MODEL.FK__CORDINADO__co_id__4222D4EF" ManuallyRouted="false" />
@@ -21,11 +21,11 @@
         <AssociationConnector Association="FC_MODEL.FK__CURSO__pf_id__5629CD9C" ManuallyRouted="false" />
         <AssociationConnector Association="FC_MODEL.FK__REPORTE__cu_id__5AEE82B9" ManuallyRouted="false" />
         <AssociationConnector Association="FC_MODEL.FK__INSTRUCTO__in_id__44FF419A" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="FC_MODEL.SOLICITUD" Width="1.5" PointX="5.25" PointY="3.875" />
+        <EntityTypeShape EntityType="FC_MODEL.SOLICITUD" Width="1.5" PointX="5.375" PointY="3.75" IsExpanded="true" />
         <AssociationConnector Association="FC_MODEL.FK__SOLICITUD__co_id__47DBAE45" />
         <AssociationConnector Association="FC_MODEL.FK__CURSO__so_id__5812160E" />
         <AssociationConnector Association="FC_MODEL.FK__SOLICITUD__in_id__48CFD27E" />
-        <EntityTypeShape EntityType="FC_MODEL.ACTIVIDAD" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="FC_MODEL.ACTIVIDAD" Width="1.5" PointX="8.375" PointY="0.5" IsExpanded="true" />
         <AssociationConnector Association="FC_MODEL.FK__ACTIVIDAD__cu_id__160F4887" />
       </Diagram>
     </edmx:Diagrams>
