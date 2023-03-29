@@ -11,7 +11,7 @@
 
     @*Mensajes que se muestran al dar clic sobre el botón cargar
         
-        Este se muestra en caso de que se añada un nuevo regsitro a la tabla *@
+        Mensaje nuevo regsitro a la tabla *@
     <div id="alert-registros-nuevos" class="toast align-items-center text-light bg-success" role="alert" aria-live="assertive" aria-atomic="true" data-delay="3000">
         <div class="d-flex">
             <div class="toast-body">
@@ -20,7 +20,7 @@
             <button type="button" class="btn-close text-light me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
     </div>
-    @*  Este se muestra cuando el número de registros se el mismo *@
+    @*  Mensaje el número de registros se el mismo *@
     <div id="alert-registros-iguales" class="toast align-items-center text-light bg-dark" role="alert" aria-live="assertive" aria-atomic="true" data-delay="3000">
         <div class="d-flex">
             <div class="toast-body">
@@ -35,7 +35,7 @@
         <h4>
             Lista De Solicitudes
             <span>
-                <button onclick="LoadTable()" class="btn btn-outline-dark btn-sm">
+                <button id="cargarTabla" class="btn btn-outline-dark btn-sm">
                     Cargar tabla
                 </button>
             </span>
@@ -117,27 +117,27 @@
 
             </div>
             <div class="modal-footer">
-                <button id="btnAprobar" name="btnAprobar" type="button" class="btn btn-success" data-bs-dismiss="modal">
+                <button id="btnAprobar" name="btnAprobar" form="formConfirmacionCambios" value="Aprobar" type="button" class="btn btn-success" data-bs-dismiss="modal">
                     Aprobar
                 </button>
-                <button id="btnRechazar" name="btnRechazar" type="submit" class="btn btn-danger" data-bs-dismiss="modal">
+                <button id="btnRechazar" name="btnRechazar" form="formConfirmacionCambios" value="Rechazar" type="submit" class="btn btn-danger" data-bs-dismiss="modal">
                     Rechazar
                 </button>
             </div>
-
         </div>
-
     </form>
-
 </div>
-<button onclick=""></button>
 
 @section scripts{
     <script>
 
         var numRegistros = 0;
         var tabladata;
+        var filaSelecionada;
 
+        @*  Es aquí donde se carga con las solicitudes*@
+
+        
         function LoadTable() {
             let numRegistrosAntes = numRegistros;
             tabladata.ajax.reload(function () {
@@ -147,20 +147,58 @@
                     setTimeout(function () {
                         $('#alert-registros-nuevos').hide();
                     }, 3000);
-                } else if (numRegistros < numRegistrosAntes) {
+                }
 
-                } else {
+                else if (numRegistros < numRegistrosAntes) {
+
+                }
+
+                else
+                {
                     $('#alert-registros-iguales').show();
-                    setTimeout(function () {
-                        $('#alert-registros-iguales').hide();
-                    }, 3000);
+                     setTimeout(function ()
+                     {
+                         $('#alert-registros-iguales').hide();
+                     }, 3000);
                 }
             });
-
         }
 
-        
+        function ShowModal(json) {
 
+            $("#txtIdSolicitud").val(0);
+            $("#txtInstructor").val("");
+            $("#txtFechaSolicitud").val("");
+            $("#txtNombreCurso").val("");
+            $("#txtProgramaFormacion").val("");
+
+            if (json != null) {
+                $("#txtIdSolicitud").val(json.so_id);
+                let fecha = new Date(json.so_date);
+
+                var day = fecha.getDate();
+                var month = fecha.getMonth() + 1; // se suma 1 porque los meses empiezan en 0 (enero)
+                var year = fecha.getFullYear();
+
+                var formattedDate = `${day}/${month}/${year}`;
+
+                fecha = `${formattedDate}`;
+
+                $("#txtInstructor").val(json.us_name);
+                $("#txtFechaSolicitud").val(fecha);
+                $("#txtNombreCurso").val(json.cu_name);
+                $("#txtProgramaFormacion").val(json.pf_name);
+            }
+            $("#formModal").modal("show");
+        }
+
+        function Guardar() {
+            var User = {
+                us_name: $("us_name")
+            }
+        }
+
+        @*Hace que la información de la tabla se recargue*@
         tabladata = $("#tabla").DataTable({
             responsive: true,
             orderign: false,
@@ -188,32 +226,33 @@
                 { "data": "pf_name" },
                 {
                     "defaultContent":
-                        '<div class="d-flex flex-wrap justify-content-evenly"> '
-                        + '<button id="OpenFile" type="button" class="btn btn-outline-success btn-sm"><i class="bi bi-folder-symlink"></i> Abrir</button>'
-                        + '<button onclick="ShowModal()" type="button" class="btn btn-outline-primary btn-sm"><i class="bi bi-check2-all"></i> Aprobar</button>'
-                        + '<button type="button" class="btn btn-outline-danger btn-sm"><i class="bi bi-x-lg"></i> Rechazar</button>'
+                        '<div class=""> '
+                        +'<button id="Aprobar" type="button" class="btn btn-outline-primary btn-sm"> <i class="bi bi-pencil-fill"></i> </button>'
+                        + '<button id="OpenFile" type="button" class="btn btn-outline-success btn-sm"> <i class="bi bi-folder-symlink"></i> </button>'
                         + '</div>',
                     "orderable": false,
                     "searchable": false,
                 }
             ],
-            "language": {
+            language: {
                 "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
             }
         });
 
-        function ShowModal(json) {
-
-            $("#formModal").modal("show");
-        }
+        @*   Obtiene el JSON de la fila *@
 
 
-        $("#tabla tbody").on("click", '#OpenFile', function () {
+        $("#tabla tbody").on("click", '#Aprobar', function () {
 
-            var filaSelecionada = tabladata.row(this).data();
+            var getDataTabledata = tabladata.row(this).data();
+            console.log(getDataTabledata);
+            ShowModal(getDataTabledata);
 
-            console.log(filaSelecionada)
+        })
 
+        $("#tabla tbody").on("click", 'Aprobar', function () {
+
+            ShowModal(filaSelecionada);
         })
 
 
