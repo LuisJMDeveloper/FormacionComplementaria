@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a7a201e7f355468882c659d660bf9a40" Name="Diagram1">
+        <EntityTypeShape EntityType="FC_CIP_pruebaModel.ACTIVIDAD" Width="1.5" PointX="7.5" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FC_CIP_pruebaModel.AMBIENTE" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FC_CIP_pruebaModel.CURSO" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="FC_CIP_pruebaModel.LUGAR" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="FC_CIP_pruebaModel.PROGRAMA_ESPECIAL" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FC_CIP_pruebaModel.PROGRAMA_FORMACION" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FC_CIP_pruebaModel.SOLICITUD" Width="1.5" PointX="8" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FC_CIP_pruebaModel.USUARIO" Width="1.5" PointX="5.75" PointY="6" IsExpanded="true" />
+        <AssociationConnector Association="FC_CIP_pruebaModel.FK__ACTIVIDAD__cu_id__22AA2996" ManuallyRouted="false" />
+        <AssociationConnector Association="FC_CIP_pruebaModel.FK__AMBIENTE__lu_id__173876EA" ManuallyRouted="false" />
+        <AssociationConnector Association="FC_CIP_pruebaModel.FK__CURSO__am_id__1ED998B2" ManuallyRouted="false" />
+        <AssociationConnector Association="FC_CIP_pruebaModel.FK__CURSO__pf_id__1FCDBCEB" ManuallyRouted="false" />
+        <AssociationConnector Association="FC_CIP_pruebaModel.FK__SOLICITUD__us_id__2C3393D0" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

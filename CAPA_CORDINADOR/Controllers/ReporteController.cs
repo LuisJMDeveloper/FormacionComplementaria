@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
-using CAPA_ENTITY.ModelEntity;
+using CAPA_ENTITY;
 using CAPA_ENTITY.ViewModels;
 
 namespace CAPA_CORDINADOR.Controllers
@@ -23,7 +23,7 @@ namespace CAPA_CORDINADOR.Controllers
         public JsonResult getSolicitudesRecibidas()
         {
             
-            using (var db = new FC_DB())
+            using (var db = new FC_CIP_pruebaEntities1())
             {
                 var oLista = db.Database.SqlQuery<getSolicitudesRecibidas>("EXEC getSolicitudesRecibidas").ToList();
                 return Json( new { data = oLista }, JsonRequestBehavior.AllowGet);

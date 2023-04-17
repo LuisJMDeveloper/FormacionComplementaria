@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Services.Description;
 using CAPA_CORDINADOR.Controllers;
-using CAPA_ENTITY.ModelEntity;
+using CAPA_ENTITY;
 
  
 
@@ -28,32 +28,13 @@ namespace CAPA_LOGIN.Controllers
         [HttpPost]
         public ActionResult Ingresar(string usuario, string clave)
         {
-            /*
-            using (var db = new FC_DB())
+            using (FC_CIP_pruebaEntities1 db = new FC_CIP_pruebaEntities1())
             {
-                
-               var persona = from user in db.USUARIO
-                where user.us_nid == Convert.ToDecimal(usuario) 
-                    && user.us_password == clave && user.us_typeuser == "Instructor"
-                select user;
+                Decimal Usuario = Convert.ToDecimal(usuario);
+                var persona = db.Database.SqlQuery<USUARIO>("EXEC getUser").ToList();
 
-                if(persona.Count() > 0)
-                {
-                    return Json(persona);
-                }
-            }*/
-
-            if(usuario == "123" && clave == "a")
-            {
-                return Content("1");
-            }else if(usuario == "321" && clave == "a"){
-                return Content("2");
+                return Json(new {persona}, JsonRequestBehavior.AllowGet);
             }
-            else
-            {
-                return Content("3");
-            }
-            
         }
 
     }
