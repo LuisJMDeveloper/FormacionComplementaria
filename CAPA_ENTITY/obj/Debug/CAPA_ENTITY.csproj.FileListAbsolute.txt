@@ -10,3 +10,15 @@ D:\FORMACION COMPLEMENTARIA\FC_1.1\CAPA_ENTITY\obj\Debug\CAPA_ENTITY.csproj.Core
 D:\FORMACION COMPLEMENTARIA\FC_1.1\CAPA_ENTITY\obj\Debug\CAPA_ENTITY.csproj.CopyComplete
 D:\FORMACION COMPLEMENTARIA\FC_1.1\CAPA_ENTITY\obj\Debug\CAPA_ENTITY.dll
 D:\FORMACION COMPLEMENTARIA\FC_1.1\CAPA_ENTITY\obj\Debug\CAPA_ENTITY.pdb
+C:\Users\User\Documents\FC_CIP\CAPA_ENTITY\bin\Debug\CAPA_ENTITY.dll.config
+C:\Users\User\Documents\FC_CIP\CAPA_ENTITY\bin\Debug\CAPA_ENTITY.dll
+C:\Users\User\Documents\FC_CIP\CAPA_ENTITY\bin\Debug\CAPA_ENTITY.pdb
+C:\Users\User\Documents\FC_CIP\CAPA_ENTITY\bin\Debug\EntityFramework.dll
+C:\Users\User\Documents\FC_CIP\CAPA_ENTITY\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\User\Documents\FC_CIP\CAPA_ENTITY\bin\Debug\EntityFramework.xml
+C:\Users\User\Documents\FC_CIP\CAPA_ENTITY\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\User\Documents\FC_CIP\CAPA_ENTITY\obj\Debug\CAPA_ENTITY.csproj.AssemblyReference.cache
+C:\Users\User\Documents\FC_CIP\CAPA_ENTITY\obj\Debug\CAPA_ENTITY.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\FC_CIP\CAPA_ENTITY\obj\Debug\CAPA_ENTITY.csproj.CopyComplete
+C:\Users\User\Documents\FC_CIP\CAPA_ENTITY\obj\Debug\CAPA_ENTITY.dll
+C:\Users\User\Documents\FC_CIP\CAPA_ENTITY\obj\Debug\CAPA_ENTITY.pdb
