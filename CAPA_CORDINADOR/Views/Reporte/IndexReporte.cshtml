@@ -261,6 +261,31 @@
             
 
         }
+
+       
+
+        function Guardar() {
+
+            /*
+             * Con este codigo se obtienen los dias seleccionados y se pasan a string separados
+             * por el caracter - (guion medio)
+            */
+            let inputsDias = [];
+            $("input[type='checkbox'][name='inputsDias']:checked").each(function () {
+                inputsDias.push($(this).val());
+            });
+            let cuDias = inputsDias.join('-');
+
+
+
+
+            console.log(oGuardado);
+
+            let so_type = $("#cmbTipoSolicitud").val();
+
+
+        
+
     </script>
 
     <script src="~/Scripts/JS/Tabla.js"></script>
