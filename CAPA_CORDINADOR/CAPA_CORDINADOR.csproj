@@ -595,12 +595,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CAPA_ENTITY\CAPA_ENTITY.csproj">
-      <Project>{00529025-10e8-46cc-bdb9-c9d16cbfc3b2}</Project>
-      <Name>CAPA_ENTITY</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>

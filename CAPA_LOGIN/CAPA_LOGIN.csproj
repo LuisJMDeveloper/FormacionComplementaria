@@ -362,10 +362,6 @@
       <Project>{9c83a6b7-db7c-4da0-bfc8-4c714611a01d}</Project>
       <Name>CAPA_CORDINADOR</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CAPA_ENTITY\CAPA_ENTITY.csproj">
-      <Project>{00529025-10e8-46cc-bdb9-c9d16cbfc3b2}</Project>
-      <Name>CAPA_ENTITY</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CAPA_INSTRUCTOR\CAPA_INSTRUCTOR.csproj">
       <Project>{1a68fddf-32d4-42e3-add7-24496010a79a}</Project>
       <Name>CAPA_INSTRUCTOR</Name>
