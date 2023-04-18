@@ -276,8 +276,30 @@
             });
             let cuDias = inputsDias.join('-');
 
+            /*
+             * Este es el objeto que se mandará a la accion del constructor
+            */
+            var oGuardado = {
+                so_type: $("#cmbTipoSolicitud").val(),
+                so_ente: $("#txtempresa").val(),
 
+                pf_code: $("#txtPf_codigo").val(),
+                pf_name: $("#txtPf_nombre").val(),
+                pf_version: $("#txtPf_codigo").val(),
+                pe_code: $("#cmbProgramaEspecial").val(),
 
+                lu_id: $("#cmbLugar").val(),
+                am_id: $("#txtAmbiente").val(),
+
+                cu_code: $("#txtCu_code").val(),
+                cu_name: $("#txtCu_name").val(),
+                pf_cupoMax: $("#txtCu_cupoMax").val(),
+                cu_duration: $("#txtCu_Duracion").val(),
+                cu_startdate: $("#txtCu_fechaInicio").val(),
+                cu_enddate: $("#txtCu_fechaFin").val(),
+                cu_note: $("#txtCu_observacion").val(),
+                cu_days: cuDias,
+            };
 
             console.log(oGuardado);
 

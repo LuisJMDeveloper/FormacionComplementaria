@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ClassLibrary1.Datos;
 
 namespace CAPA_INSTRUCTOR.Controllers
 {
@@ -12,6 +13,11 @@ namespace CAPA_INSTRUCTOR.Controllers
         public ActionResult InstructorIndex()
         {
             return View();
+        }
+
+        public JsonResult GuardarSolicitud()
+        {
+
         }
     }
 }

@@ -59,6 +59,7 @@
     <Compile Include="Datos\PROGRAMA_FORMACION.cs" />
     <Compile Include="Datos\SOLICITUD.cs" />
     <Compile Include="Datos\USUARIO.cs" />
+    <Compile Include="Datos\SolicitudCurso.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
