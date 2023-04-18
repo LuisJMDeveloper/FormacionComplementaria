@@ -50,12 +50,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Datos\ACTIVIDAD.cs" />
+    <Compile Include="Datos\AMBIENTE.cs" />
+    <Compile Include="Datos\CURSO.cs" />
+    <Compile Include="Datos\LUGAR.cs" />
     <Compile Include="Datos\Modelo.cs" />
+    <Compile Include="Datos\PROGRAMA_ESPECIAL.cs" />
+    <Compile Include="Datos\PROGRAMA_FORMACION.cs" />
+    <Compile Include="Datos\SOLICITUD.cs" />
+    <Compile Include="Datos\USUARIO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Logica\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

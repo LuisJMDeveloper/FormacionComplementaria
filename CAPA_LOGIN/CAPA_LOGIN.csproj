@@ -366,6 +366,10 @@
       <Project>{1a68fddf-32d4-42e3-add7-24496010a79a}</Project>
       <Name>CAPA_INSTRUCTOR</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ClassLibrary1\ClassLibrary1.csproj">
+      <Project>{5beb565d-8cd9-44cd-bc1c-29ae8fc05723}</Project>
+      <Name>ClassLibrary1</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

@@ -177,7 +177,6 @@ C:\Users\User\Documents\FC_CIP\CAPA_CORDINADOR\bin\roslyn\vbc.rsp
 C:\Users\User\Documents\FC_CIP\CAPA_CORDINADOR\bin\roslyn\VBCSCompiler.exe
 C:\Users\User\Documents\FC_CIP\CAPA_CORDINADOR\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\User\Documents\FC_CIP\CAPA_CORDINADOR\bin\Antlr3.Runtime.dll
-C:\Users\User\Documents\FC_CIP\CAPA_CORDINADOR\bin\CAPA_ENTITY.dll
 C:\Users\User\Documents\FC_CIP\CAPA_CORDINADOR\bin\EntityFramework.dll
 C:\Users\User\Documents\FC_CIP\CAPA_CORDINADOR\bin\EntityFramework.SqlServer.dll
 C:\Users\User\Documents\FC_CIP\CAPA_CORDINADOR\bin\ICSharpCode.SharpZipLib.dll
@@ -207,8 +206,6 @@ C:\Users\User\Documents\FC_CIP\CAPA_CORDINADOR\bin\System.Web.WebPages.Deploymen
 C:\Users\User\Documents\FC_CIP\CAPA_CORDINADOR\bin\System.Web.WebPages.dll
 C:\Users\User\Documents\FC_CIP\CAPA_CORDINADOR\bin\System.Web.WebPages.Razor.dll
 C:\Users\User\Documents\FC_CIP\CAPA_CORDINADOR\bin\WebGrease.dll
-C:\Users\User\Documents\FC_CIP\CAPA_CORDINADOR\bin\CAPA_ENTITY.pdb
-C:\Users\User\Documents\FC_CIP\CAPA_CORDINADOR\bin\CAPA_ENTITY.dll.config
 C:\Users\User\Documents\FC_CIP\CAPA_CORDINADOR\bin\EntityFramework.xml
 C:\Users\User\Documents\FC_CIP\CAPA_CORDINADOR\bin\EntityFramework.SqlServer.xml
 C:\Users\User\Documents\FC_CIP\CAPA_CORDINADOR\bin\ICSharpCode.SharpZipLib.pdb
@@ -250,3 +247,6 @@ C:\Users\User\Documents\FC_CIP\CAPA_CORDINADOR\obj\Debug\CAPA_CORDINADOR.csproj.
 C:\Users\User\Documents\FC_CIP\CAPA_CORDINADOR\obj\Debug\CAPA_CORDINADOR.csproj.CopyComplete
 C:\Users\User\Documents\FC_CIP\CAPA_CORDINADOR\obj\Debug\CAPA_CORDINADOR.dll
 C:\Users\User\Documents\FC_CIP\CAPA_CORDINADOR\obj\Debug\CAPA_CORDINADOR.pdb
+C:\Users\User\Documents\FC_CIP\CAPA_CORDINADOR\bin\ClassLibrary1.dll
+C:\Users\User\Documents\FC_CIP\CAPA_CORDINADOR\bin\ClassLibrary1.pdb
+C:\Users\User\Documents\FC_CIP\CAPA_CORDINADOR\bin\ClassLibrary1.dll.config

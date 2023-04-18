@@ -244,3 +244,6 @@ C:\Users\User\Documents\FC_CIP\CAPA_INSTRUCTOR\obj\Debug\CAPA_INSTRUCTOR.csproj.
 C:\Users\User\Documents\FC_CIP\CAPA_INSTRUCTOR\obj\Debug\CAPA_INSTRUCTOR.csproj.CopyComplete
 C:\Users\User\Documents\FC_CIP\CAPA_INSTRUCTOR\obj\Debug\CAPA_INSTRUCTOR.dll
 C:\Users\User\Documents\FC_CIP\CAPA_INSTRUCTOR\obj\Debug\CAPA_INSTRUCTOR.pdb
+C:\Users\User\Documents\FC_CIP\CAPA_INSTRUCTOR\bin\ClassLibrary1.dll
+C:\Users\User\Documents\FC_CIP\CAPA_INSTRUCTOR\bin\ClassLibrary1.pdb
+C:\Users\User\Documents\FC_CIP\CAPA_INSTRUCTOR\bin\ClassLibrary1.dll.config

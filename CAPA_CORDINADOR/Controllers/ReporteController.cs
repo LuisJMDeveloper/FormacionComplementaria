@@ -6,8 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
-using CAPA_ENTITY;
-using CAPA_ENTITY.ViewModels;
+
 
 namespace CAPA_CORDINADOR.Controllers
 {
@@ -18,7 +17,7 @@ namespace CAPA_CORDINADOR.Controllers
         {
             return View();
         }
-
+        /*
         [HttpGet]
         public JsonResult getSolicitudesRecibidas()
         {
@@ -28,7 +27,7 @@ namespace CAPA_CORDINADOR.Controllers
                 var oLista = db.Database.SqlQuery<getSolicitudesRecibidas>("EXEC getSolicitudesRecibidas").ToList();
                 return Json( new { data = oLista }, JsonRequestBehavior.AllowGet);
             }
-        }
+        }*/
 
         
     }

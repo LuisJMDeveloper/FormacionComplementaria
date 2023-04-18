@@ -214,7 +214,6 @@ C:\Users\User\Documents\FC_CIP\CAPA_LOGIN\bin\System.Web.WebPages.Deployment.dll
 C:\Users\User\Documents\FC_CIP\CAPA_LOGIN\bin\System.Web.WebPages.dll
 C:\Users\User\Documents\FC_CIP\CAPA_LOGIN\bin\System.Web.WebPages.Razor.dll
 C:\Users\User\Documents\FC_CIP\CAPA_LOGIN\bin\WebGrease.dll
-C:\Users\User\Documents\FC_CIP\CAPA_LOGIN\bin\CAPA_ENTITY.dll
 C:\Users\User\Documents\FC_CIP\CAPA_LOGIN\bin\CAPA_CORDINADOR.pdb
 C:\Users\User\Documents\FC_CIP\CAPA_LOGIN\bin\CAPA_CORDINADOR.dll.config
 C:\Users\User\Documents\FC_CIP\CAPA_LOGIN\bin\CAPA_INSTRUCTOR.pdb
@@ -248,8 +247,6 @@ C:\Users\User\Documents\FC_CIP\CAPA_LOGIN\bin\System.Web.WebPages.Deployment.xml
 C:\Users\User\Documents\FC_CIP\CAPA_LOGIN\bin\System.Web.WebPages.Razor.xml
 C:\Users\User\Documents\FC_CIP\CAPA_LOGIN\bin\Antlr3.Runtime.pdb
 C:\Users\User\Documents\FC_CIP\CAPA_LOGIN\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\User\Documents\FC_CIP\CAPA_LOGIN\bin\CAPA_ENTITY.pdb
-C:\Users\User\Documents\FC_CIP\CAPA_LOGIN\bin\CAPA_ENTITY.dll.config
 C:\Users\User\Documents\FC_CIP\CAPA_LOGIN\bin\es\System.Web.Helpers.resources.dll
 C:\Users\User\Documents\FC_CIP\CAPA_LOGIN\bin\es\System.Web.Mvc.resources.dll
 C:\Users\User\Documents\FC_CIP\CAPA_LOGIN\bin\es\System.Web.Optimization.resources.dll
@@ -262,3 +259,6 @@ C:\Users\User\Documents\FC_CIP\CAPA_LOGIN\obj\Debug\CAPA_LOGIN.csproj.CoreCompil
 C:\Users\User\Documents\FC_CIP\CAPA_LOGIN\obj\Debug\CAPA_LOGIN.csproj.CopyComplete
 C:\Users\User\Documents\FC_CIP\CAPA_LOGIN\obj\Debug\CAPA_LOGIN.dll
 C:\Users\User\Documents\FC_CIP\CAPA_LOGIN\obj\Debug\CAPA_LOGIN.pdb
+C:\Users\User\Documents\FC_CIP\CAPA_LOGIN\bin\ClassLibrary1.dll
+C:\Users\User\Documents\FC_CIP\CAPA_LOGIN\bin\ClassLibrary1.pdb
+C:\Users\User\Documents\FC_CIP\CAPA_LOGIN\bin\ClassLibrary1.dll.config
