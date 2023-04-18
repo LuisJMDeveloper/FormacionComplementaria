@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ClassLibrary1.Datos;
+using ClassLibrary1.Logica;
 
 namespace CAPA_INSTRUCTOR.Controllers
 {
@@ -15,9 +16,9 @@ namespace CAPA_INSTRUCTOR.Controllers
             return View();
         }
 
-        public JsonResult GuardarSolicitud()
+        public JsonResult GuardarSolicitud(SolicitudCurso oGuardado)
         {
-
+            return Json(new { data = oGuardado }, JsonRequestBehavior.AllowGet);
         }
     }
 }

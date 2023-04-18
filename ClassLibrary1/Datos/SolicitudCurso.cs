@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ClassLibrary1.Logica
 {
     public class SolicitudCurso
     {
+        [Required]
+        [StringLength(100)]
         public string so_type { get; set; }
         public string so_ente { get; set; }
 
